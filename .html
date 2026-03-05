@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Aboreto',serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ================= CURSOR ================= */
+.cursor{
+  position:fixed;
+  width:22px;
+  height:22px;
+  border:2px solid #d6b37a;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:transform 0.08s ease;
+  z-index:9999;
+}
+
+@media(max-width:992px){
+  body{ cursor:auto; }
+  .cursor{ display:none; }
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:30px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  padding:15px 30px;
+  z-index:1000;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  border-radius:14px;
+  transition:0.4s ease;
+}
+
+.navbar.sticky{
+  background:rgba(0,0,0,0.8);
+  top:15px;
+}
+
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo img{
+  height:38px;
+}
+
+.nav-links{
+  display:flex;
+  gap:22px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#ddd;
+  font-size:12px;
+  letter-spacing:2px;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#d6b37a;
+}
+
+.btn-talk{
+  padding:8px 16px;
+  font-size:12px;
+  border:1px solid #d6b37a;
+  color:#d6b37a;
+  text-decoration:none;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.btn-talk:hover{
+  background:#d6b37a;
+  color:#000;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:26px;
+  height:2px;
+  background:#d6b37a;
+  transition:0.3s;
+}
+
+.hamburger.open span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.open span:nth-child(2){
+  opacity:0;
+}
+.hamburger.open span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* ================= HERO ================= */
+.hero{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+.hero-img{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%);
+  transition:0.2s ease-out;
+  z-index:1;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.5) 60%,
+    rgba(0,0,0,0.2) 100%
+  );
+  z-index:2;
+}
+
+.hero-content{
+  position:relative;
+  height:100%;
+  padding:0 5vw;
+  z-index:3;
+}
+
+.right-top{
+  position:absolute;
+  top:150px;
+  right:80px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;   /* 🔥 Forces right alignment */
+  text-align:right;
+}
+
+.portfolio{
+  font-size:clamp(28px, 5vw, 65px);
+  color:#d6b37a;
+  letter-spacing:4px;
+}
+
+.bottom-left{
+  position:absolute;
+  bottom:60px;        /* distance from bottom */
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  width:100%;
+  max-width:900px;
+}
+
+.title{
+  font-size:clamp(40px, 8vw, 80px);
+  color:#d6b37a;
+  letter-spacing:6px;
+}
+
+.bottom-left p{
+  margin-top:25px;
+  font-size:14px;
+  color:#aaa;
+  line-height:1.8;
+}
+
+
+/* ================= ABOUT ================= */
+.about-section{
+  padding:100px 8% 20px 8%;
+  background:#000;
+  color:#d6b37a;
+}
+
+.about-container{
+  display:flex;
+  justify-content:space-between;
+  gap:60px;
+}
+
+.about-left{
+  width:35%;
+}
+
+.about-left h3{
+  font-size:22px;
+  color:#aaa;
+  margin-bottom:20px;
+}
+
+.about-left h2{
+  font-size:60px;
+  letter-spacing:4px;
+}
+
+.about-contact{
+  margin-top:40px;
+  color:#ccc;
+  line-height:2;
+}
+
+.about-right{
+  width:60%;
+  font-size:16px;
+  color:#bbb;
+  line-height:1.9;
+}
+
+.about-right p{
+  margin-bottom:25px;
+}
+
+/* ================= TIMELINE ================= */
+.timeline{
+  margin-top:120px;
+  display:flex;
+  justify-content:space-between;
+  position:relative;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:22px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:rgba(214,179,122,0.3);
+}
+
+.timeline-item{
+  width:30%;
+}
+
+.circle{
+  width:45px;
+  height:45px;
+  border:1px solid rgba(214,179,122,0.6);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+  color:#d6b37a;
+}
+
+.timeline-item h4{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.timeline-item span{
+  display:block;
+  font-size:15px;
+  color:#aaa;
+  margin-bottom:6px;
+}
+
+.timeline-item p{
+  font-size:14px;
+  color:#777;
+}
+
+/* =========================
+   CREATIVE TIMELINE
+========================= */
+
+/* =========================
+   COMPACT CREATIVE TIMELINE
+========================= */
+
+/* =========================
+   HORIZONTAL TIMELINE
+========================= */
+
+.horizontal-timeline{
+  position:relative;
+  margin-top:40px;
+  padding:60px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+
+/* Center horizontal line */
+.timeline-line{
+  position:absolute;
+  top:35px;
+  left:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(214,179,122,0.7),
+    transparent
+  );
+}
+
+/* Each item */
+.timeline-item{
+  position:relative;
+  width:30%;
+  text-align:center;
+}
+
+/* Dot */
+.timeline-dot{
+  width:16px;
+  height:16px;
+  background:#d6b37a;
+  border-radius:50%;
+  margin:0 auto 20px auto;
+  box-shadow:0 0 15px rgba(214,179,122,0.8);
+  position:relative;
+  z-index:2;
+}
+
+/* Card */
+.timeline-card{
+  background:rgba(255,255,255,0.03);
+  padding:15px 20px;
+  border:1px solid rgba(214,179,122,0.25);
+  border-radius:8px;
+  backdrop-filter:blur(8px);
+  transition:0.3s ease;
+}
+
+.timeline-card:hover{
+  border-color:#d6b37a;
+  box-shadow:0 0 15px rgba(214,179,122,0.25);
+}
+
+/* Typography */
+.timeline-card span{
+  font-size:12px;
+  letter-spacing:2px;
+  color:#d6b37a;
+}
+
+.timeline-card h4{
+  margin-top:8px;
+  font-size:15px;
+  color:#fff;
+}
+
+.timeline-card h5{
+  margin-top:5px;
+  font-size:13px;
+  color:#aaa;
+}
+
+.timeline-card p{
+  margin-top:5px;
+  font-size:12px;
+  color:#777;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:992px){
+
+  .horizontal-timeline{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .timeline-line{
+    left:20px;
+    top:0;
+    width:2px;
+    height:100%;
+    background:linear-gradient(
+      to bottom,
+      transparent,
+      rgba(214,179,122,0.7),
+      transparent
+    );
+  }
+
+  .timeline-item{
+    width:100%;
+    padding-left:50px;
+    margin-bottom:40px;
+    text-align:left;
+  }
+
+  .timeline-dot{
+    position:absolute;
+    left:11px;
+    margin:0;
+  }
+
+}
+
+/* =========================
+   MOBILE VERSION
+========================= */
+
+@media(max-width:992px){
+
+  .creative-timeline::before{
+    left:16px;
+    margin-top:30px;
+  }
+
+  .timeline-block{
+    width:100%;
+    padding:15px 20px 15px 50px;
+    margin-bottom:25px;     /* tighter */
+    left:0 !important;
+    text-align:left !important;
+  }
+
+  .timeline-dot{
+    left:9px !important;
+    top:25px;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .creative-timeline::before{
+    left:20px;
+  }
+
+  .timeline-block{
+    width:100%;
+    padding-left:60px;
+    padding-right:20px;
+    margin-bottom:50px;
+    left:0 !important;
+    text-align:left !important;
+  }
+
+  .timeline-dot{
+    left:11px !important;
+    right:auto;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:992px){
+
+  .hamburger{ display:flex; }
+  .btn-talk{ display:none; }
+
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    background:rgba(0,0,0,0.95);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+
+  .nav-links.active{ max-height:500px; }
+
+  .nav-links a{
+    width:100%;
+    padding:20px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+
+ .nav-links a:last-child{
+  border-bottom:none;
+}
+
+  .about-container{
+    flex-direction:column;
+  }
+
+  .about-left,
+  .about-right{
+    width:100%;
+  }
+
+  .timeline{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .timeline::before{ display:none; }
+
+  .timeline-item{ width:100%; }
+
+ .title{
+  font-size:80px;
+  font-weight:400;   /* regular */
+  letter-spacing:4px; /* reduce spacing */
+  text-align:center;
+  color:#d6b37a;
+}
+}
+
+
+/* =====================
+   MY WORK CIRCLE
+===================== */
+
+.my-work{
+  margin-top:25px;
+  width:clamp(60px, 12vw, 95px);
+  height:clamp(60px, 12vw, 95px);
+  border-radius:50%;
+  border:1px solid rgba(214,179,122,0.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:0.4s ease;
+  color:#d6b37a;
+}
+
+.my-work span:first-child{
+  font-size:clamp(14px, 3vw, 18px);
+  animation:bounce 1.5s infinite;
+}
+
+.my-work span:last-child{
+  font-size:clamp(8px, 2vw, 10px);
+  letter-spacing:2px;
+  margin-top:4px;
+}
+
+.my-work:hover{
+  box-shadow:0 0 20px rgba(214,179,122,0.5);
+  transform:scale(1.05);
+}
+
+/* Bouncing arrow animation */
+@keyframes bounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(6px); }
+
+  
+}
+
+.my-work{
+  align-self:flex-end;   /* 🔥 Ensures perfect right alignment */
+}
+
+/* =====================
+   HERO TEXT ANIMATION
+===================== */
+
+.portfolio,
+.title,
+.bottom-left p,
+.my-work{
+  opacity:0;
+  transform:translateY(40px);
+}
+
+/* Portfolio from top */
+.portfolio{
+  transform:translateY(-40px);
+  animation:fadeDown 1s ease forwards;
+  animation-delay:0.3s;
+}
+
+/* Title from bottom */
+.title{
+  animation:fadeUp 1s ease forwards;
+  animation-delay:0.6s;
+}
+
+/* Paragraph */
+.bottom-left p{
+  animation:fadeUp 1s ease forwards;
+  animation-delay:0.9s;
+}
+
+/* Circle zoom */
+.my-work{
+  transform:scale(0.8);
+  animation:zoomIn 1s ease forwards;
+  animation-delay:1.2s;
+}
+
+/* Keyframes */
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeDown{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes zoomIn{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* ================= TOOLS SECTION ================= */
+
+.tools-section{
+  padding:50px 8% 30px;
+  text-align:center;
+}
+
+.section-heading{
+  font-size:38px;
+  color:#d6b37a;
+  letter-spacing:4px;
+  margin-bottom:60px;
+}
+
+.tools-wrapper{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.02)
+  );
+  padding:40px 60px;
+  border-radius:12px;
+}
+
+.tool-item img{
+  height:70px;
+  transition:0.4s ease;
+}
+
+.tool-item img:hover{
+  transform:scale(1.15);
+}
+
+
+
+/* ================= CONTENT SECTION ================= */
+
+/* ===== CONTENT SECTION ===== */
+
+.content-section{
+  padding:100px 8%;
+  background:#000;
+  color:#fff;
+}
+
+/* Header */
+.content-header{
+  text-align:center;
+  margin-bottom:60px;
+}
+
+.content-header h2{
+  font-size:64px;
+  font-family: "Playfair Display", serif;
+  font-weight:400;
+  color:#d6b37a;
+  margin-bottom:15px;
+}
+
+.content-header p{
+  font-size:16px;
+  color:#888;
+  max-width:500px;
+  margin:0 auto;
+  line-height:1.6;
+}
+
+/* Grid */
+.content-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:40px;
+}
+
+/* Cards */
+.content-card{
+  background:#0a0a0a;
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+.content-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:0.4s ease;
+}
+
+/* Hover effect */
+.content-card:hover{
+  transform:translateY(-10px);
+}
+
+.content-card:hover img{
+  transform:scale(1.05);
+}
+
+/* ===============================
+   PROCESS SECTION
+================================= */
+
+./* ===============================
+   PROCESS SECTION
+================================= */
+
+.process-section{
+  background:#000;
+  padding:120px 8%;
+  color:#d6b37a;
+  position:relative;
+}
+
+/* HEADER */
+
+.process-header{
+  text-align:center;
+  margin-bottom:120px;
+}
+
+.top-icon{
+  width:120px;
+  margin-bottom:25px;
+}
+
+.process-header h5{
+  letter-spacing:3px;
+  font-size:12px;
+  color:#999;
+  margin-bottom:20px;
+}
+
+.process-header h2{
+  font-size:clamp(40px,5vw,70px);
+  font-weight:400;
+  margin-bottom:20px;
+}
+
+.process-header p{
+  max-width:600px;
+  margin:0 auto;
+  color:#777;
+}
+
+/* TIMELINE */
+
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:120px;
+  position:relative;
+}
+
+/* CENTER LINE */
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:3px;
+  height:100%;
+
+  background:linear-gradient(
+    to top,
+    transparent 0%,
+    rgba(214,179,122,0.8) 30%,
+    rgba(214,179,122,0.8) 70%,
+    transparent 100%
+  );
+
+  background-size:100% 200%;
+  animation:flowLine 4s linear infinite;
+}
+
+.timeline-dot{
+  width:18px;
+  height:18px;
+  background:#d6b37a;
+  border-radius:50%;
+  box-shadow:
+    0 0 10px rgba(214,179,122,0.8),
+    0 0 25px rgba(214,179,122,0.5);
+}
+
+@keyframes flowLine{
+  0%{ background-position:0% 200%; }
+  100%{ background-position:0% 0%; }
+}
+
+/* ROW */
+
+.timeline-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:80px;
+  position:relative;
+}
+
+/* Reverse layout */
+
+.timeline-row.reverse{
+  direction:rtl;
+}
+
+.timeline-row.reverse .timeline-content{
+  direction:ltr;
+}
+
+/* IMAGE */
+
+/* ===============================
+   STEP IMAGE PREMIUM EFFECT
+================================= */
+
+.timeline-image{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+/* Glow Wrapper */
+.image-glow{
+  position:relative;
+  display:inline-block;
+}
+
+/* Radial Gold Glow */
+.image-glow::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:320px;
+  height:320px;
+  background:radial-gradient(circle,
+      rgba(214,179,122,0.22) 0%,
+      rgba(214,179,122,0.12) 35%,
+      rgba(214,179,122,0.06) 55%,
+      transparent 75%);
+  border-radius:50%;
+  z-index:0;
+  animation:glowBreath 4s ease-in-out infinite;
+}
+
+/* Image Styling */
+.image-glow img{
+  position:relative;
+  z-index:2;
+  max-width:380px;
+  width:100%;
+  transition:0.6s ease;
+  animation:floatMove 6s ease-in-out infinite;
+  filter:drop-shadow(0 0 15px rgba(214,179,122,0.4));
+}
+
+/* Floating Animation */
+@keyframes floatMove{
+  0%,100%{ transform:translateY(0px); }
+  50%{ transform:translateY(-15px); }
+}
+
+/* Glow Breathing Effect */
+@keyframes glowBreath{
+  0%,100%{ opacity:0.6; transform:translate(-50%,-50%) scale(1); }
+  50%{ opacity:1; transform:translate(-50%,-50%) scale(1.08); }
+}
+
+/* Hover Effect */
+.image-glow:hover img{
+  transform:scale(1.05) translateY(-5px);
+  filter:drop-shadow(0 0 35px rgba(214,179,122,0.8));
+}
+
+.image-glow:hover::before{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.2);
+}
+
+/* CONTENT CARD */
+
+.timeline-content{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(214,179,122,0.2);
+  padding:40px;
+  max-width:520px;
+  border-radius:10px;
+  backdrop-filter:blur(8px);
+  transition:0.4s;
+}
+
+.timeline-content:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px rgba(214,179,122,0.15);
+}
+
+.timeline-content h4{
+  margin-bottom:20px;
+  letter-spacing:2px;
+  font-size:18px;
+}
+
+.timeline-content p{
+  color:#999;
+  line-height:1.8;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .timeline::before{
+    display:none;
+  }
+
+  .timeline-row{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .timeline-row.reverse{
+    direction:ltr;
+  }
+
+  .process-section{
+    padding:80px 6%;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .right-top{
+    top:80px;
+    right:5vw;
+  }
+
+  .bottom-left{
+    bottom:80px;
+    padding:0 20px;
+  }
+
+}
+@media (max-width:768px){
+
+  .bottom-left{
+    bottom:60px;
+    padding:0 20px;
+  }
+
+  .my-work{
+    width:70px;
+    height:70px;
+    margin-top:25px;
+  align-self:flex-end; 
+  }
+
+}
+.step-time{
+  display:inline-block;
+  font-size:10px;
+  letter-spacing:2px;
+  padding:6px 12px;
+  border:1px solid rgba(214,179,122,0.4);
+  margin-bottom:20px;
+  color:#d6b37a;
+}
+
+.timeline-content ul{
+  margin-top:20px;
+  padding-left:18px;
+}
+
+.timeline-content ul li{
+  margin-bottom:10px;
+  color:#aaa;
+  font-size:14px;
+}
+
+/* =================================
+   BULB STRONG GLOW
+================================= */
+
+.header-glow{
+  position:relative;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.header-glow::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle,
+      rgba(214,179,122,0.18) 0%,
+      rgba(214,179,122,0.10) 35%,
+      rgba(214,179,122,0.04) 60%,
+      rgba(214,179,122,0.015) 75%,
+      transparent 90%);
+  border-radius:50%;
+  z-index:0;
+  animation:glowBreath 5s ease-in-out infinite;
+  filter:blur(10px);
+}
+.top-icon{
+  position:relative;
+  z-index:2;
+  width:120px;
+filter:drop-shadow(0 0 12px rgba(214,179,122,0.5));}
+
+.process-header h2{
+  background:linear-gradient(
+    90deg,
+    #f5d7a1,
+    #d6b37a,
+    #b8925e
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:2px;
+}
+
+/* =====================================
+   FULL CENTER ALIGN FOR MOBILE + TAB
+===================================== */
+
+@media (max-width: 992px){
+
+  .timeline-row{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100%;
+  }
+
+  .timeline-content{
+    width:85%;
+    max-width:550px;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .timeline-image{
+    margin:0 auto 25px auto;
+  }
+
+}
+/* =====================================
+   PREMIUM CENTERED BULLET POINTS
+===================================== */
+
+.timeline-content ul{
+  list-style:none;
+  padding:0;
+  margin-top:20px;
+}
+
+.timeline-content ul li{
+  position:relative;
+  padding-left:0;
+  margin-bottom:14px;
+  font-size:15px;
+  color:#ccc;
+  line-height:1.7;
+  text-align:center;
+}
+
+/* Golden Dot */
+.timeline-content ul li::before{
+  content:"";
+  display:inline-block;
+  width:8px;
+  height:8px;
+  background:#d6b37a;
+  border-radius:50%;
+  margin-right:10px;
+  vertical-align:middle;
+  box-shadow:0 0 10px rgba(214,179,122,0.6);.timeline-content ul{
+  list-style:none;
+  padding-left:20px;
+  margin-top:20px;
+}
+
+.timeline-content ul li{
+  position:relative;
+  margin-bottom:14px;
+  font-size:15px;
+  color:#ccc;
+  line-height:1.7;
+  text-align:left;   /* ✅ LEFT on desktop */
+}
+
+/* Golden Dot */
+.timeline-content ul li::before{
+  content:"";
+  position:absolute;
+  left:-15px;
+  top:10px;
+  width:8px;
+  height:8px;
+  background:#d6b37a;
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(214,179,122,0.6);
+}
+}
+
+
+/* ===============================
+   CONTACT HERO - IMAGE BLEND STYLE
+================================= */
+
+/* ===============================
+   SECTION WRAPPER
+================================= */
+
+.contact-section{
+  background:#000;
+}
+
+/* ===============================
+   IMAGE AREA
+================================= */
+
+
+.image-area{
+  position:relative;
+  height:85vh;            /* Increase height so more image shows */
+  overflow:hidden;
+  background:#000;
+}
+
+/* IMAGE */
+.image-area{
+  position: relative;
+  width: 100%;
+  height: 600px; /* or whatever height your section has */
+  overflow: hidden;
+}
+
+.image-area img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+/* 🔥 TOP BLACK GRADIENT */
+.image-area::before{
+  content: "";
+  position: absolute;
+  top: 5;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:linear-gradient(
+  to bottom,
+  rgba(0,0,0,0.9),
+  rgba(0,0,0,0.6),
+  rgba(0,0,0,0.2),
+  transparent
+);
+  );
+  z-index: 20;
+}
+
+/* Make sure content stays above */
+.contact-box{
+  position: relative;
+  z-index: 3;
+}
+
+/* ===============================
+   CONTENT BOX BELOW IMAGE
+================================= */
+
+.contact-box{
+  max-width:1000px;
+  margin:-120px auto 100px auto;   /* Pull box slightly over image */
+  background:rgba(20,20,20,0.95);
+  padding:60px;
+  border:1px solid rgba(214,179,122,0.2);
+  backdrop-filter:blur(10px);
+  position:relative;
+  z-index:2;
+}
+
+/* TEXT */
+.contact-box h2{
+  font-size:36px;
+  color:#d6b37a;
+}
+
+.contact-box h1{
+  font-size:48px;
+  margin-bottom:40px;
+  color:#fff;
+}
+
+.contact-label{
+  font-size:12px;
+  letter-spacing:3px;
+  color:#aaa;
+}
+
+.contact-box h3{
+  font-size:32px;
+  margin:10px 0 30px;
+  color:#d6b37a;
+}
+
+/* FORM */
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  padding:18px;
+  background:transparent;
+  border:1px solid rgba(214,179,122,0.3);
+  color:#fff;
+}
+
+.contact-form textarea{
+  min-height:150px;
+  resize:none;
+}
+
+.contact-form button{
+  padding:18px;
+  background:#d6b37a;
+  border:none;
+  cursor:pointer;
+  letter-spacing:2px;
+  transition:0.3s;
+}
+
+.contact-form button:hover{
+  background:#c5a268;
+}
+/* ===============================
+   CLEAN CENTERED ABOUT SECTION
+================================= */
+
+.about-clean{
+  padding:100px 20px;
+  background:#0f0f0f; /* same dark theme */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.about-wrapper{
+  max-width:750px;
+  width:100%;
+}
+
+.about-clean h5{
+  font-size:13px;
+  letter-spacing:4px;
+  color:#999;
+  margin-bottom:25px;
+}
+
+.about-clean h2{
+  font-size:38px;
+  font-weight:300;
+  color:#ffffff;
+  line-height:1.4;
+  margin-bottom:25px;
+}
+
+.about-clean p{
+  font-size:16px;
+  color:#aaaaaa;
+  line-height:1.8;
+}
+@media(max-width:768px){
+
+  .about-clean{
+    padding:70px 20px;
+  }
+
+  .about-clean h2{
+    font-size:26px;
+  }
+
+  .about-clean p{
+    font-size:14px;
+  }
+}/* ===============================
+   PREMIUM GOLD ABOUT SECTION
+================================= */
+
+.about-clean{
+  padding:120px 20px;
+  background:#000; /* Same as page background */
+  text-align:center;
+  overflow:hidden;
+}
+
+.about-wrapper{
+  max-width:800px;
+  margin:0 auto;
+}
+
+/* Small Title */
+.about-small{
+  font-size:13px;
+  letter-spacing:4px;
+  color:#888;
+  margin-bottom:25px;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1s ease forwards;
+}
+
+/* Main Title */
+.about-title{
+  font-size:42px;
+  font-weight:300;
+  color:#fff;
+  line-height:1.4;
+  margin-bottom:30px;
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1s ease forwards;
+  animation-delay:0.2s;
+}
+
+/* Gold Highlight */
+.about-title span{
+  color:#d6b37a;
+  position:relative;
+}
+
+/* Gold underline animation */
+.about-title span::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:1px;
+  background:#d6b37a;
+  transition:0.6s ease;
+}
+
+.about-clean:hover .about-title span::after{
+  width:100%;
+}
+
+/* Paragraph */
+.about-text{
+  font-size:16px;
+  color:#aaa;
+  line-height:1.9;
+  opacity:0;
+  transform:translateY(50px);
+  animation:fadeUp 1s ease forwards;
+  animation-delay:0.4s;
+}
+
+/* ===============================
+   ANIMATION
+================================= */
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:768px){
+
+  .about-clean{
+    padding:80px 20px;
+  }
+
+  .about-title{
+    font-size:28px;
+  }
+
+  .about-text{
+    font-size:14px;
+  }
+}
+
+/* ===============================
+   PREMIUM CONTACT SECTION
+================================= */
+
+.contact-section{
+  background:#000;
+  color:#fff;
+  overflow:hidden;
+}
+
+/* ================= IMAGE AREA ================= */
+
+.image-area{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+}
+
+.image-area img{
+  width:100%;
+  display:block;
+  filter:brightness(0.85);
+}
+
+/* TOP BLEND */
+.top-gradient{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:0px;
+  background:linear-gradient(to bottom,#000,transparent);
+}
+
+/* BOTTOM BLEND */
+.bottom-gradient{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:250px;
+  background:linear-gradient(to top,#000,transparent);
+}
+
+/* ================= CONTENT BOX ================= */
+
+.contact-box{
+  max-width:900px;
+  margin:-120px auto 120px auto; /* pulls box slightly over image */
+  padding:60px;
+  background:#0f0f0f;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  position:relative;
+  z-index:5;
+}
+
+/* Titles */
+
+.contact-big{
+  font-size:clamp(22px,3vw,30px);
+  font-weight:300;
+  letter-spacing:2px;
+  color:#ccc;
+}
+
+.contact-highlight{
+  font-size:clamp(32px,5vw,48px);
+  font-weight:300;
+  color:#d6b37a;
+  margin-bottom:40px;
+}
+
+/* Label */
+
+.contact-label{
+  display:block;
+  font-size:12px;
+  letter-spacing:4px;
+  color:#888;
+  margin-bottom:10px;
+}
+
+.contact-box h3{
+  font-size:20px;
+  font-weight:300;
+  margin-bottom:40px;
+}
+
+/* ================= FORM ================= */
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  background:#111;
+  border:1px solid rgba(214,179,122,0.3);
+  padding:15px;
+  color:#fff;
+  font-size:14px;
+  border-radius:8px;
+  outline:none;
+  transition:0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color:#d6b37a;
+  box-shadow:0 0 15px rgba(214,179,122,0.3);
+}
+
+.contact-form textarea{
+  min-height:120px;
+  resize:none;
+}
+
+/* Button */
+
+.contact-form button{
+  padding:15px;
+  background:transparent;
+  border:1px solid #d6b37a;
+  color:#d6b37a;
+  font-size:13px;
+  letter-spacing:2px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-form button:hover{
+  background:#d6b37a;
+  color:#000;
+}
+
+@media(max-width:768px){
+
+  .contact-box{
+    margin:-80px 20px 80px 20px;
+    padding:40px 25px;
+  }
+
+}
+
+/* ===============================
+   SIDE FILLER GLOW
+================================= */
+
+.side-glow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:400px;
+  height:400px;
+  pointer-events:none;
+  background:radial-gradient(circle,
+      rgba(214,179,122,0.15) 0%,
+      rgba(214,179,122,0.08) 40%,
+      transparent 70%);
+  z-index:1;
+  filter:blur(40px);
+}
+
+.left-glow{
+  left:-150px;
+}
+
+.right-glow{
+  right:-150px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor"></div>
+
+<header class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#">Services</a>
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Pages</a>
+    </nav>
+
+    <a href="#" class="btn-talk">LET'S TALK</a>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO FIRST -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <img src="hero.png" class="hero-img" id="heroImg">
+
+  <div class="hero-content">
+    <div class="right-top">
+  <h2 class="portfolio">PORTFOLIO<br>2025</h2>
+
+  <div class="my-work">
+    <span>↓</span>
+    <span>MY WORK</span>
+  </div>
+</div>
+
+    <div class="bottom-left">
+      <h1 class="title">UI UX DESIGNER</h1>
+      <p>Premium web design, development, and SEO services.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECOND -->
+<section class="about-clean">
+  <div class="about-wrapper">
+
+    <h5 class="about-small">ABOUT ME</h5>
+
+    <h2 class="about-title">
+      I create <span>premium</span> and meaningful digital experiences
+    </h2>
+
+    <p class="about-text">
+      I'm a UI/UX Designer focused on crafting intuitive, user-centered 
+      interfaces that combine aesthetics with functionality. 
+      My goal is to design experiences that feel simple, smooth, and impactful.
+    </p>
+
+  </div>
+</section>
+</section>
+
+<div class="horizontal-timeline">
+
+  <div class="timeline-line"></div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-card">
+      <span>01</span>
+      <h4>Digi Interface Pvt Ltd</h4>
+      <h5>UI/UX Designer</h5>
+      <p>Aug 2021 – Feb 2022</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-card">
+      <span>02</span>
+      <h4>G10 Consultancy</h4>
+      <h5>UI/UX Designer</h5>
+      <p>Aug 2022 – Sep 2023</p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <div class="timeline-card">
+      <span>03</span>
+      <h4>Plexitech Solutions LLP</h4>
+      <h5>UI/UX Designer</h5>
+      <p>Feb 2024 – Present</p>
+    </div>
+  </div>
+
+</div>
+</section>
+<!-- ================= TOOLS SECTION ================= -->
+<section class="tools-section">
+  <h2 class="section-heading">TOOLS</h2>
+
+  <div class="tools-wrapper">
+    <div class="tool-item">
+      <img src="figma.png" alt="Figma">
+    </div>
+
+    <div class="tool-item">
+      <img src="xd.png" alt="Adobe XD">
+    </div>
+
+    <div class="tool-item">
+      <img src="ps.png" alt="Photoshop">
+    </div>
+
+    <div class="tool-item">
+      <img src="ai.png" alt="Illustrator">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= CONTENT SECTION ================= -->
+<section class="content-section">
+  <div class="content-header">
+    <h2>Content</h2>
+    <p>Our process ensures that we create a website tailored to your business needs.</p>
+  </div>
+
+  <div class="content-grid">
+    <div class="content-card">
+      <img src="project1.png" alt="Project 1">
+    </div>
+
+    <div class="content-card">
+      <img src="project2.png" alt="Project 2">
+    </div>
+
+    <div class="content-card">
+      <img src="project3.png" alt="Project 3">
+    </div>
+
+    <div class="content-card">
+      <img src="project4.png" alt="Project 4">
+    </div>
+  </div>
+</section> 
+
+<section class="process-section">
+
+  <!-- Top Heading -->
+  <div class="process-header">
+
+  <div class="image-glow header-glow">
+    <img src="bulp.png" class="top-icon" alt="">
+  </div>
+
+  <h5>THE PROCESS</h5>
+  <h2>Designing Thinking</h2>
+  <p>Our process ensures that we create a website tailored to your business needs.</p>
+
+</div>
+
+  <div class="timeline">
+
+    <!-- STEP 1 -->
+    <div class="timeline-row">
+      <div class="timeline-image">
+        <div class="image-glow"></div>
+        <img src="step1.png" alt="">
+      </div>
+      <div class="timeline-content">
+        <h4>EMPATHIZE</h4>
+<p>
+    Before we start, we determine if and how I can help you.
+    What are your requirements for your new website?
+    Why do you need a new website?
+    What goals do you have, and what problems can we solve?
+  </p>
+
+  <ul>
+    <li>We get to know each other better</li>
+    <li>Determine how I can best assist you</li>
+    <li>Understand the goals you have for your website</li>
+  </ul>      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="timeline-row reverse">
+      <div class="timeline-image">
+        <div class="image-glow"></div>
+        <img src="step2.png" alt="">
+      </div>
+      <div class="timeline-content">
+        <h4>DEFINE</h4>
+<p>
+    Together, we develop a strategy that successfully combines
+    your goals with the needs of your target audience.
+    Based on this concept, I create the first wireframes
+    and an interactive prototype.
+  </p>
+
+  <ul>
+    <li>UX Design</li>
+    <li>Wireframes</li>
+    <li>Interactive Prototype</li>
+  </ul>      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="timeline-row">
+      <div class="timeline-image">
+        <div class="image-glow"></div>
+        <img src="step3.png" alt="">
+      </div>
+      <div class="timeline-content">
+        <h4>IDEATE</h4>
+<p>
+    Now comes the magic. Based on the previously developed concept,
+    I create a high-end screen design perfectly tailored to your brand.
+    A web design that sets you apart from your competition
+    and provides an excellent user experience.
+  </p>
+
+  <ul>
+    <li>High-end web design tailored to your brand</li>
+    <li>Interactive prototype of the design</li>
+  </ul>      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="timeline-row reverse">
+      <div class="timeline-image">
+        <div class="image-glow"></div>
+        <img src="step4.png" alt="">
+      </div>
+      <div class="timeline-content">
+        <h4>PROTOTYPE</h4>
+<p>
+    In this step, we breathe life into your new high-end design.
+    You will receive a custom-built website using a modular
+    web design system and CMS integration.
+    Animations will add the necessary flair to your site.
+  </p>
+
+  <ul>
+    <li>Custom-built website</li>
+    <li>Modular web design systems</li>
+    <li>CMS integration</li>
+  </ul>      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="timeline-row">
+      <div class="timeline-image">
+        <div class="image-glow"></div>
+        <img src="step5.png" alt="">
+      </div>
+      <div class="timeline-content">
+        <h4>TEST</h4>
+<p>
+    In a personal Framer workshop, I will show you how to
+    make changes to your new website quickly and easily.
+    You will also receive personalized video tutorials.
+  </p>
+
+  <ul>
+    <li>Personal workshop</li>
+    <li>Personalized video tutorials</li>
+    <li>Edit text and images directly on your website</li>
+  </ul>      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="contact-section">
+
+  <!-- IMAGE AREA -->
+  <div class="image-area">
+    <img src="onemanarmy.png" alt="">
+
+    <div class="top-gradient"></div>
+    <div class="bottom-gradient"></div>
+
+    <div class="side-glow left-glow"></div>
+    <div class="side-glow right-glow"></div>
+</div>
+
+  <!-- CONTENT BOX -->
+  <div class="contact-box">
+      <h2 class="contact-big">A WEBSITE THAT LEAVES</h2>
+      <h1 class="contact-highlight">a lasting impression!</h1>
+
+      <span class="contact-label">CONTACT</span>
+      <h3>Let’s get in touch.</h3>
+
+      <form class="contact-form">
+          <input type="text" placeholder="NAME">
+          <input type="email" placeholder="EMAIL">
+          <textarea placeholder="MESSAGE"></textarea>
+          <button type="submit">SEND MESSAGE</button>
+      </form>
+  </div>
+
+</section>
+
+
+
+</section>
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+const navbar = document.getElementById("navbar");
+const heroImg = document.getElementById("heroImg");
+const cursor = document.querySelector(".cursor");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  hamburger.classList.toggle("open");
+});
+
+window.addEventListener("scroll", () => {
+  window.scrollY > 50
+    ? navbar.classList.add("sticky")
+    : navbar.classList.remove("sticky");
+});
+
+window.addEventListener("mousemove", (e) => {
+  let x = (window.innerWidth / 2 - e.pageX) / 40;
+  let y = (window.innerHeight / 2 - e.pageY) / 40;
+  heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+});
+
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+</script>
+
+</body>
+</html>
