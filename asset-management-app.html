@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asset Management App - Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #050505;
+  --text: #f7f2e8;
+  --muted: #a9a39a;
+  --gold: #d6b37a;
+  --panel: #0d0d0d;
+  --line: rgba(214,179,122,0.2);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Aboreto', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: rgba(5,5,5,0.85);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+.back-link {
+  text-decoration: none;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+.container { width: min(1120px, 92vw); margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: clamp(40px, 6vw, 68px) 0 clamp(34px, 4vw, 52px);
+}
+
+.kicker {
+  color: #8f8a81;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 6vw, 64px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #f5d7a1, #d6b37a, #b8925e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.hero-visual {
+  margin: clamp(20px, 3vw, 34px) auto 0;
+  width: min(520px, 100%);
+}
+
+.section {
+  padding: clamp(30px, 4vw, 48px) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(18px, 2.8vw, 30px);
+}
+
+.section-header h2 {
+  font-size: clamp(28px, 4.4vw, 50px);
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 1.8px;
+}
+
+.section-subtitle {
+  max-width: 760px;
+  margin: 8px auto 0;
+  color: var(--muted);
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.block {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.22));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: clamp(10px, 2vw, 18px);
+}
+
+.block img { width: 100%; }
+
+.logo-block {
+  width: min(200px, 100%);
+  margin: 0 auto;
+}
+
+.logo-image {
+  width: min(100px, 100%);
+  margin: 0 auto;
+}
+
+.wire-grid,
+.screen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.8vw, 16px);
+}
+
+.phone {
+  background: #0a0a0a;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.phone img {
+  width: 100%;
+  height: auto;
+}
+
+.subsection {
+  margin-top: clamp(28px, 4vw, 44px);
+}
+
+.subsection h3 {
+  color: var(--gold);
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-weight: 400;
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+
+.subsection-subtitle {
+  color: var(--muted);
+  font-size: clamp(12px, 2vw, 14px);
+  margin: -8px 0 clamp(12px, 2vw, 18px);
+}
+
+.footer-gap { height: 26px; }
+
+@media (max-width: 960px) {
+  .wire-grid, .screen-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .wire-grid, .screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .subsection h3 { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-nav">
+  <div class="nav-inner">
+    <div class="brand">Portfolio Case Study</div>
+    <a class="back-link" href=".html#my-work">Back To Work</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="kicker">UI / UX CASE STUDY</div>
+    <h1>Asset Management App</h1>
+    <p>Asset lifecycle tracking with request flows, approvals, and job operations designed for speed and clarity.</p>
+    <div class="hero-visual">
+      <img src="Images/project2.png" alt="Asset Management hero screens">
+    </div>
+  </section>
+
+  <section class="section" id="logo">
+    <div class="section-header">
+      <h2>Logo</h2>
+      <p class="section-subtitle">A clean mark designed to represent reliability, structure, and operational clarity.</p>
+    </div>
+    <div class="block logo-block">
+      <img src="Images/Asset Management/LOGO/Group (2).png" alt="Asset management logo" class="logo-image">
+    </div>
+  </section>
+
+  <section class="section" id="flow">
+    <div class="section-header">
+      <h2>Asset Management Flow</h2>
+      <p class="section-subtitle">End-to-end process mapping from request initiation to approvals, assignment, and closure.</p>
+    </div>
+    <div class="block">
+      <img src="Images/Asset Management/PROCESS FLOW/Card (1).png" alt="Asset management process flow">
+    </div>
+  </section>
+
+  <section class="section" id="wireframe">
+    <div class="section-header">
+      <h2>High Fidelity Wireframe</h2>
+      <p class="section-subtitle">Detailed structural screens used to validate hierarchy, components, and interaction logic.</p>
+    </div>
+    <div class="wire-grid">
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663350.png" alt="Wireframe 1"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663351.png" alt="Wireframe 2"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663352.png" alt="Wireframe 3"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663353.png" alt="Wireframe 4"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663354.png" alt="Wireframe 5"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663355.png" alt="Wireframe 6"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663356.png" alt="Wireframe 7"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663358.png" alt="Wireframe 8"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663359.png" alt="Wireframe 9"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663360.png" alt="Wireframe 10"></div>
+      <div class="phone"><img src="Images/Asset Management/WIREFRAME/Group 2085663361.png" alt="Wireframe 11"></div>
+    </div>
+  </section>
+
+  <section class="section" id="main-screens">
+    <div class="section-header">
+      <h2>Main Screens</h2>
+      <p class="section-subtitle">Final production-ready UI grouped by key user journeys and operational tasks.</p>
+    </div>
+
+    <div class="subsection">
+      <h3>Login Screens</h3>
+      <p class="subsection-subtitle">Secure sign-in flow with onboarding-focused entry points.</p>
+      <div class="screen-grid">
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Onboarding.png" alt="Login screen 1"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Onboarding-1.png" alt="Login screen 2"></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Asset Request</h3>
+      <p class="subsection-subtitle">Request creation, validation, approvals, and request detail views.</p>
+      <div class="screen-grid">
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/New Asset Request.png" alt="Asset request 1"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/New Asset Request-1.png" alt="Asset request 2"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/New Asset Request-2.png" alt="Asset request 3"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Asset Request-3.png" alt="Asset request 4"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/assets Requests (1).png" alt="Asset request 5"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Request Details-1.png" alt="Asset request 6"></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Create Job</h3>
+      <p class="subsection-subtitle">Job setup workflow including assignment, status, and completion states.</p>
+      <div class="screen-grid">
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job (1).png" alt="Create job 1"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job-1.png" alt="Create job 2"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job-2.png" alt="Create job 3"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job-3.png" alt="Create job 4"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job-4 (1).png" alt="Create job 5"></div>
+        <div class="phone"><img src="Images/Asset Management/MAIN SCREENS/Job-5.png" alt="Create job 6"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-gap"></div>
+</main>
+
+</body>
+</html>
