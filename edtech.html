@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edtech - Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #050505;
+  --text: #f7f2e8;
+  --muted: #aaa399;
+  --gold: #d6b37a;
+  --line: rgba(214,179,122,0.2);
+}
+
+body {
+  font-family: 'Aboreto', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(10px);
+  background: rgba(5,5,5,0.86);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  width: min(1220px, 94vw);
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+
+.back-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+.container { width: min(1220px, 94vw); margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: clamp(36px, 5vw, 64px) 0 clamp(28px, 4vw, 44px);
+}
+
+.kicker {
+  color: #8e887f;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5.6vw, 64px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #f5d7a1, #d6b37a, #b8925e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.hero-banner {
+  margin-top: clamp(20px, 3vw, 30px);
+  border-radius: 10px;
+}
+
+.section {
+  padding: clamp(28px, 4vw, 48px) 0;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: clamp(30px, 5vw, 56px);
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 1.8px;
+  margin-bottom: clamp(16px, 2.8vw, 28px);
+}
+
+.section h3 {
+  color: var(--gold);
+  font-size: clamp(22px, 3.3vw, 34px);
+  font-weight: 400;
+  margin: clamp(22px, 3.5vw, 36px) 0 clamp(12px, 2vw, 18px);
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: clamp(10px, 2vw, 16px);
+}
+
+.typo-grid,
+.phone-grid,
+.web-grid,
+.two-grid {
+  display: grid;
+  gap: clamp(10px, 1.8vw, 16px);
+}
+
+.typo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.phone-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.web-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.two-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.card {
+  border-radius: 8px;
+}
+
+.card img {
+  border-radius: 8px;
+}
+
+.footer-gap { height: 26px; }
+
+@media (max-width: 980px) {
+  .phone-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .typo-grid { grid-template-columns: 1fr; }
+  .phone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .web-grid, .two-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-nav">
+  <div class="nav-inner">
+    <div class="brand">Portfolio Case Study</div>
+    <a class="back-link" href=".html#my-work">Back To Work</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="kicker">THE PROCESS</div>
+    <h1>Edtech</h1>
+    <p>Product design system and experience screens for a modern, scalable education platform.</p>
+    <div class="hero-banner card">
+      <img src="Images/edtech/hero-2.png" alt="Edtech hero banner">
+    </div>
+  </section>
+
+  <section class="section" id="design-system">
+    <h2>Design System</h2>
+
+    <div class="typo-grid">
+      <div class="panel card"><img src="Images/edtech/font system.png" alt="Typography system 1"></div>
+      <div class="panel card"><img src="Images/edtech/font system 02.png" alt="Typography system 2"></div>
+      <div class="panel card"><img src="Images/edtech/font system 02-1.png" alt="Typography system 3"></div>
+    </div>
+
+    <h3>Brand Colours</h3>
+    <div class="panel card"><img src="Images/edtech/colour theory.png" alt="Brand colours"></div>
+
+    <h3>Components</h3>
+    <div class="panel card"><img src="Images/edtech/Components.png" alt="Components"></div>
+
+    <h3>Icons</h3>
+    <div class="panel card"><img src="Images/edtech/Icon (2).png" alt="Icon system"></div>
+  </section>
+
+  <section class="section" id="screens">
+    <h2>Screens</h2>
+
+    <h3>Student Onboarding</h3>
+    <div class="phone-grid">
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_sendviaSMS.png" alt="Onboarding 1"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_sendviaSMS-1.png" alt="Onboarding 2"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_enternumber.png" alt="Onboarding 3"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_verifyotp.png" alt="Onboarding 4"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_enterotp.png" alt="Onboarding 5"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_enterotp-1.png" alt="Onboarding 6"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_Details.png" alt="Onboarding 7"></div>
+      <div class="card"><img src="Images/edtech/Agrimguru_Registration_Details-1.png" alt="Onboarding 8"></div>
+      <div class="card"><img src="Images/edtech/Number already registered.png" alt="Onboarding 9"></div>
+    </div>
+
+    <h3>Course Module</h3>
+    <div class="phone-grid">
+      <div class="card"><img src="Images/edtech/Know your gurus.png" alt="Course module 1"></div>
+      <div class="card"><img src="Images/edtech/KNOW YOUR GURU 01.png" alt="Course module 2"></div>
+      <div class="card"><img src="Images/edtech/batches selection.png" alt="Course module 3"></div>
+      <div class="card"><img src="Images/edtech/Cart 1.0.png" alt="Course module 4"></div>
+    </div>
+
+    <h3>Pages</h3>
+    <div class="web-grid">
+      <div class="card"><img src="Images/edtech/MacBook Pro 14_ - 104.png" alt="Web page 1"></div>
+      <div class="card"><img src="Images/edtech/MacBook Pro 14_ - 106.png" alt="Web page 2"></div>
+    </div>
+  </section>
+
+  <div class="footer-gap"></div>
+</main>
+
+</body>
+</html>

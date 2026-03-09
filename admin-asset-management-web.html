@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Asset Management Web - Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #050505;
+  --text: #f7f2e8;
+  --muted: #a8a39b;
+  --gold: #d6b37a;
+  --line: rgba(214,179,122,0.2);
+}
+
+body {
+  font-family: 'Aboreto', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: rgba(5,5,5,0.86);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  width: min(1220px, 94vw);
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand { color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+.back-link {
+  text-decoration: none;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+.container { width: min(1220px, 94vw); margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: clamp(38px, 5.2vw, 66px) 0 clamp(30px, 4.4vw, 50px);
+}
+
+.kicker {
+  color: #8e887f;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 5.8vw, 66px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #f5d7a1, #d6b37a, #b8925e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 780px;
+  margin: 0 auto;
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.hero-banner {
+  margin-top: clamp(20px, 3vw, 32px);
+  border-radius: 10px;
+}
+
+.section {
+  padding: clamp(24px, 3.4vw, 42px) 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(30px, 5vw, 58px);
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 1.8px;
+  margin-bottom: clamp(18px, 2.8vw, 30px);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 1.8vw, 18px);
+}
+
+.frame {
+  border-radius: 8px;
+}
+
+.frame img {
+  border-radius: 8px;
+}
+
+.stack {
+  display: grid;
+  gap: clamp(14px, 2.2vw, 22px);
+}
+
+.footer-gap { height: 24px; }
+
+@media (max-width: 800px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="page-nav">
+  <div class="nav-inner">
+    <div class="brand">Portfolio Case Study</div>
+    <a class="back-link" href=".html#my-work">Back To Work</a>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="kicker">THE PROCESS</div>
+    <h1>Asset Management Web</h1>
+    <p>Web-based admin platform for centralized asset governance, configuration workflows, and operational controls.</p>
+    <div class="hero-banner frame">
+      <img src="Images/Asset Management Web/HERO-1.png" alt="Admin Asset Management hero banner">
+    </div>
+  </section>
+
+  <section class="section" id="screens">
+    <h2 class="section-title">Screens</h2>
+
+    <div class="stack">
+      <div class="grid-2">
+        <div class="frame"><img src="Images/Asset Management Web/Group 2085663368.png" alt="Login screen"></div>
+        <div class="frame"><img src="Images/Asset Management Web/Home (1) 1.png" alt="Home screen"></div>
+      </div>
+
+      <div class="frame"><img src="Images/Asset Management Web/Company 1.png" alt="Company listing screen"></div>
+
+      <div class="frame"><img src="Images/Asset Management Web/Company (2) 1.png" alt="Company popup screen"></div>
+
+      <div class="grid-2">
+        <div class="frame"><img src="Images/Asset Management Web/Loader To DigiLinkz 1.png" alt="Loader screen"></div>
+        <div class="frame"><img src="Images/Asset Management Web/Frame 1394 1.png" alt="Document editor screen"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-gap"></div>
+</main>
+
+</body>
+</html>
