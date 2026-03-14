@@ -81,25 +81,25 @@ img {
   top: 46%;
   transform: translate(-50%, -50%);
   width: min(320px, 72vw);
-  height: 120px;
+  height: 90px;
   pointer-events: none;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(214, 179, 122, 0.04) 20%,
-    rgba(214, 179, 122, 0.35) 50%,
-    rgba(214, 179, 122, 0.04) 80%,
+    rgba(214, 179, 122, 0.02) 18%,
+    rgba(214, 179, 122, 0.22) 50%,
+    rgba(214, 179, 122, 0.02) 82%,
     transparent 100%
   );
-  filter: blur(12px);
+  filter: blur(18px);
   animation: beamMove 2.8s ease-in-out infinite;
 }
 
 .preloader-logo {
   width: clamp(72px, 20vw, 116px);
   margin: 0 auto 20px;
-  filter: drop-shadow(0 0 20px rgba(214, 179, 122, 0.5));
+  filter: drop-shadow(0 0 14px rgba(214, 179, 122, 0.35));
   animation: logoFloat 2.6s ease-in-out infinite;
 }
 
@@ -457,7 +457,7 @@ img {
   position: relative;
   width: min(1200px, 100%);
   margin: 0 auto;
-  padding: clamp(8px, 1.6vw, 14px) clamp(12px, 4vw, 24px) clamp(8px, 1.8vw, 16px);
+  padding: clamp(18px, 2.4vw, 26px) clamp(12px, 4vw, 24px) clamp(12px, 2vw, 18px);
   display: flex;
   justify-content: space-between;
   gap: 28px;
@@ -467,8 +467,9 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(clamp(20px, 3vw, 34px) + 7px);
+  top: calc(clamp(20px, 3vw, 34px) - 6px);
   height: 2px;
+  z-index: 1;
   background: linear-gradient(
     to right,
     transparent,
@@ -482,6 +483,7 @@ img {
   width: 100%;
   text-align: center;
   z-index: 1;
+  padding-top: clamp(26px, 3vw, 32px);
 }
 
 .timeline-dot {
@@ -489,8 +491,13 @@ img {
   height: 16px;
   border-radius: 50%;
   background: var(--gold);
-  margin: 0 auto 20px;
+  position: absolute;
+  left: 50%;
+  top: calc(clamp(20px, 3vw, 34px) - 6px);
+  transform: translate(-50%, -50%);
+  margin: 0;
   box-shadow: 0 0 15px rgba(214, 179, 122, 0.8);
+  z-index: 2;
 }
 
 .timeline-card {
@@ -501,6 +508,19 @@ img {
   margin-top: 20px;
   backdrop-filter: blur(8px);
   transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 10% -16px 10%;
+  height: 14px;
+  background: radial-gradient(ellipse at center, rgba(214, 179, 122, 0.24), transparent 60%);
+  filter: blur(10px);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .timeline-card:hover {
@@ -868,9 +888,9 @@ img {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(214, 179, 122, 0.32) 0%,
-    rgba(214, 179, 122, 0.18) 42%,
-    transparent 75%
+    rgba(214, 179, 122, 0.22) 0%,
+    rgba(214, 179, 122, 0.12) 42%,
+    transparent 74%
   );
   animation: glowBreath 4s ease-in-out infinite;
 }
@@ -891,6 +911,14 @@ img {
   height: clamp(260px, 34vw, 380px);
 }
 
+.timeline-row:first-child .image-glow::before {
+  background: radial-gradient(
+    circle,
+    rgba(214, 179, 122, 0.16) 0%,
+    rgba(214, 179, 122, 0.08) 42%,
+    transparent 72%
+  );
+}
 .timeline-image:hover > img {
   transform: scale(1.05) translateY(-5px);
   filter: drop-shadow(0 0 35px rgba(214, 179, 122, 0.8));
@@ -1494,13 +1522,15 @@ img {
     text-align: left;
     padding-left: 50px;
     margin-bottom: 16px;
+    padding-top: 22px;
   }
 
   .timeline-dot {
     position: absolute;
-    left: 11px;
-    top: 4px;
+    left: 12px;
+    top: 8px;
     margin: 0;
+    z-index: 2;
   }
 
   .timeline::before {
@@ -1643,8 +1673,8 @@ img {
   }
 
   .timeline-image .image-glow {
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
   }
 
   .timeline-image > img {
