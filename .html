@@ -404,9 +404,15 @@ window.addEventListener("scroll", () => {
 });
 
 window.addEventListener("mousemove", (e) => {
-  let x = (window.innerWidth / 2 - e.pageX) / 40;
-  let y = (window.innerHeight / 2 - e.pageY) / 40;
-  heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+  const x = Math.max(-10, Math.min(10, (window.innerWidth / 2 - e.pageX) / 40));
+  const y = Math.max(-10, Math.min(10, (window.innerHeight / 2 - e.pageY) / 40));
+  heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.03)`;
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY < 30) {
+    heroImg.style.transform = "translate(0,0) scale(1.03)";
+  }
 });
 
 document.addEventListener("mousemove", e => {
