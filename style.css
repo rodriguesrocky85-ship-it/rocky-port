@@ -1528,7 +1528,7 @@ img {
   .timeline-dot {
     position: absolute;
     left: 18px;
-    top: 10px;
+    top: 25px;
     margin: 0;
     z-index: 2;
     transform: translate(-50%, 0);
