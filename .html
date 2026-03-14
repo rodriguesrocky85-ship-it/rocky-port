@@ -358,6 +358,9 @@
 
 
 
+</button>
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
 <script>
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
@@ -367,6 +370,7 @@ const cursor = document.querySelector(".cursor");
 const preloader = document.getElementById("preloader");
 const contactBox = document.querySelector(".contact-box");
 const btnTalk = document.querySelector(".btn-talk");
+const backToTop = document.getElementById("backToTop");
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("active");
@@ -394,6 +398,9 @@ window.addEventListener("scroll", () => {
   window.scrollY > 50
     ? navbar.classList.add("sticky")
     : navbar.classList.remove("sticky");
+  if (backToTop) {
+    backToTop.classList.toggle("is-visible", window.scrollY > 260);
+  }
 });
 
 window.addEventListener("mousemove", (e) => {
@@ -431,6 +438,12 @@ if (contactBox) {
   }, { threshold: 0.28 });
 
   revealObserver.observe(contactBox);
+}
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 </script>
 
