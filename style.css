@@ -351,7 +351,7 @@ img {
 .bottom-left {
   position: absolute;
   left: 50%;
-  bottom: clamp(52px, 12vh, 120px);
+  bottom: clamp(28px, 9vh, 90px);
   transform: translateX(-50%);
   width: min(900px, 100%);
   text-align: center;
@@ -380,6 +380,14 @@ img {
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp 1s ease forwards 0.9s;
+}
+
+.hero-name {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: clamp(18px, 3vw, 22px);
+  letter-spacing: 0.5px;
 }
 
 /* About */
