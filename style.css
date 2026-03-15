@@ -220,6 +220,10 @@ img {
   gap: 20px;
 }
 
+.mobile-talk {
+  display: none;
+}
+
 .nav-links a {
   text-decoration: none;
   color: #ddd;
@@ -1503,6 +1507,10 @@ img {
 
   .btn-talk {
     display: none;
+  }
+
+  .mobile-talk {
+    display: block;
   }
 
   .nav-links {
