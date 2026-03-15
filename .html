@@ -426,6 +426,13 @@ window.addEventListener("load", () => {
   }, wait);
 });
 
+// Ensure mobile loads at top after refresh/navigation.
+window.addEventListener("load", () => {
+  if (window.innerWidth <= 992) {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+});
+
 if (contactBox) {
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
