@@ -249,6 +249,43 @@ img { max-width: 100%; height: auto; display: block; }
 
 .footer-gap { height: 24px; }
 
+.back-to-top {
+  position: fixed;
+  right: clamp(12px, 3vw, 20px);
+  bottom: clamp(14px, 3vw, 22px);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(214, 179, 122, 0.8);
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 1px rgba(214, 179, 122, 0.2) inset,
+    0 0 16px rgba(214, 179, 122, 0.24);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 120;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  box-shadow:
+    0 0 0 1px rgba(214, 179, 122, 0.28) inset,
+    0 0 20px rgba(214, 179, 122, 0.32);
+}
+
 @media (max-width: 800px) {
   .grid-2 { grid-template-columns: 1fr; }
 }
@@ -401,6 +438,23 @@ img { max-width: 100%; height: auto; display: block; }
 
   <div class="footer-gap"></div>
 </main>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
+<script>
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (!backToTop) return;
+  backToTop.classList.toggle("is-visible", window.scrollY > 240);
+});
+
+if (backToTop) {
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+</script>
 
 </body>
 </html>
