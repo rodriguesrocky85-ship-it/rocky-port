@@ -93,6 +93,13 @@ img { max-width: 100%; height: auto; display: block; }
   padding: clamp(24px, 3.4vw, 42px) 0;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(16px, 2.6vw, 28px);
+}
+
+.section-left { text-align: left; }
+
 .section-title {
   text-align: center;
   font-size: clamp(30px, 5vw, 58px);
@@ -100,6 +107,125 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 400;
   letter-spacing: 1.8px;
   margin-bottom: clamp(18px, 2.8vw, 30px);
+}
+
+.section-header h2 {
+  font-size: clamp(28px, 4.6vw, 50px);
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 1.6px;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.section-left .section-subtitle {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.meta-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 20%, rgba(214,179,122,0.12), rgba(13,13,13,0.94));
+  box-shadow: 0 16px 44px rgba(0,0,0,0.35);
+}
+
+.meta-label {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 1.3px;
+}
+
+.meta-value {
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.tool-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(214,179,122,0.10);
+  color: var(--text);
+  font-size: 12px;
+  box-shadow: inset 0 0 14px rgba(214, 179, 122, 0.08);
+}
+
+.tool-chip img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: radial-gradient(circle at 20% 20%, rgba(214, 179, 122, 0.12), rgba(13, 13, 13, 0.94));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+}
+
+.card h4 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.card li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
 }
 
 .grid-2 {
@@ -147,6 +273,95 @@ img { max-width: 100%; height: auto; display: block; }
     </div>
   </section>
 
+  <section class="section">
+    <div class="section-header section-left">
+      <h2>Project Overview</h2>
+      <p class="section-subtitle">A web-based administrative dashboard built to help operations managers monitor asset data, usage cycles, and reporting insights across infrastructure projects. The dashboard provides a centralized platform where management can track asset distribution, monitor lifecycle usage, and review operational reports.</p>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-card">
+        <div class="meta-label">ROLE</div>
+        <div class="meta-value">UI/UX Designer</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">RESPONSIBILITIES</div>
+        <div class="meta-value">UX Research, Information Architecture, Dashboard Design, UI Design</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">TOOLS</div>
+        <div class="tool-icons">
+          <span class="tool-chip"><img src="Images/figma.png" alt="Figma icon">Figma</span>
+          <span class="tool-chip"><img src="Images/ps.png" alt="Photoshop icon">Photoshop</span>
+        </div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-label">PLATFORM</div>
+        <div class="meta-value">Web Dashboard</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header section-left">
+      <h2>Problem</h2>
+      <p class="section-subtitle">Management lacked a centralized system to monitor asset data across multiple locations.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Key challenges</h4>
+        <ul>
+          <li>No real-time visibility into asset distribution</li>
+          <li>Difficulty tracking asset usage cycles</li>
+          <li>Manual reporting processes</li>
+          <li>Lack of operational insights for decision making</li>
+          <li>Limited visibility into asset performance and usage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header section-left">
+      <h2>Research</h2>
+      <p class="section-subtitle">Understanding how managers monitored operations helped define the dashboard structure.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Key insights</h4>
+        <ul>
+          <li>Managers required clear reporting and summarized insights</li>
+          <li>Asset usage cycles needed visual representation</li>
+          <li>Data needed to be presented in a simple and structured format</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Direction</h4>
+        <ul>
+          <li>Create a dashboard focused on operational visibility</li>
+          <li>Emphasize reporting clarity and lifecycle tracking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header section-left">
+      <h2>Solution</h2>
+      <p class="section-subtitle">I designed a web-based dashboard that provides management with clear insights into asset operations.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Key features</h4>
+        <ul>
+          <li>Asset overview dashboard with operational summaries</li>
+          <li>Usage cycle tracking for infrastructure assets</li>
+          <li>Reporting modules for operational insights</li>
+          <li>Structured data visualization for easy monitoring</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="screens">
     <h2 class="section-title">Screens</h2>
 
@@ -163,6 +378,23 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="grid-2">
         <div class="frame"><img src="Images/Asset Management Web/Loader To DigiLinkz 1.png" alt="Loader screen"></div>
         <div class="frame"><img src="Images/Asset Management Web/Frame 1394 1.png" alt="Document editor screen"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header section-left">
+      <h2>Outcome</h2>
+      <p class="section-subtitle">The dashboard enabled management teams to monitor asset usage and operational reports from a centralized system.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h4>Key improvements</h4>
+        <ul>
+          <li>Improved operational visibility</li>
+          <li>Faster reporting and data access</li>
+          <li>Better asset lifecycle monitoring</li>
+        </ul>
       </div>
     </div>
   </section>
