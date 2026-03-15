@@ -31,6 +31,16 @@ body {
   cursor: none;
 }
 
+/* Prevent sticky nav from covering anchor targets */
+section[id],
+#my-work,
+#about,
+#process,
+#tools,
+#contact {
+  scroll-margin-top: clamp(90px, 12vw, 140px);
+}
+
 body.loading {
   overflow: hidden;
 }
