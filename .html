@@ -8,6 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+<script>
+// Prevent browsers from restoring scroll and force top on load (helps mobile refresh)
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo({ top: 0, behavior: 'auto' });
+});
+</script>
 </head>
 
 <body class="loading">
@@ -428,9 +437,7 @@ window.addEventListener("load", () => {
 
 // Ensure mobile loads at top after refresh/navigation.
 window.addEventListener("load", () => {
-  if (window.innerWidth <= 992) {
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }
+  window.scrollTo({ top: 0, behavior: "auto" });
 });
 
 if (contactBox) {
