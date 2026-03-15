@@ -172,6 +172,33 @@ h1 {
   background: rgba(214, 179, 122, 0.08);
 }
 
+.tool-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(214, 179, 122, 0.10);
+  color: var(--text);
+  font-size: 12px;
+  box-shadow: inset 0 0 14px rgba(214, 179, 122, 0.08);
+}
+
+.tool-chip img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -302,8 +329,9 @@ h1 {
       </div>
       <div class="meta-card">
         <div class="meta-label">TOOLS</div>
-        <div class="pill-row">
-          <span class="pill">Figma</span><span class="pill">Photoshop</span>
+        <div class="tool-icons" aria-label="Tools used">
+          <span class="tool-chip"><img src="Images/figma.png" alt="Figma icon">Figma</span>
+          <span class="tool-chip"><img src="Images/ps.png" alt="Photoshop icon">Photoshop</span>
         </div>
       </div>
       <div class="meta-card">
@@ -404,6 +432,11 @@ h1 {
       <div class="screen-card"><img src="Images/fleet tracking images/13.png" alt="Light screen 13"></div>
       <div class="screen-card"><img src="Images/fleet tracking images/14.png" alt="Light screen 14"></div>
     </div>
+  </section>
+
+  <section class="section">
+    <h3>Outcome</h3>
+    <p>The redesigned application simplified fleet monitoring workflows and improved visibility of key operational metrics such as fuel usage, idle time, and overspeed alerts. The improved interface allowed fleet managers to monitor vehicles more efficiently and make faster operational decisions.</p>
   </section>
 
   <div class="footer-space"></div>
