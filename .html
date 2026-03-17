@@ -70,7 +70,7 @@ window.addEventListener('pageshow', (event) => {
     </div>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#my-work">Work</a>
+      <a href="#my-work">Case Studies</a>
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#tools">Tools</a>
@@ -94,7 +94,7 @@ window.addEventListener('pageshow', (event) => {
 
   <div class="hero-content">
     <div class="right-top">
-  <h2 class="portfolio">PORTFOLIO<br>2025</h2>
+  <h2 class="portfolio">PORTFOLIO<br>2026</h2>
 
 </div>
 
@@ -105,9 +105,9 @@ window.addEventListener('pageshow', (event) => {
         UI/UX Designer crafting intuitive digital products and seamless user experiences.<br><br>
         I design user-centered interfaces that simplify complex workflows and create meaningful interactions across web and mobile platforms.
       </p>
-      <a href="#my-work" class="my-work" aria-label="Go to My Work section">
+      <a href="#my-work" class="my-work" aria-label="Go to Case Studies section">
         <span>&darr;</span>
-        <span>MY WORK</span>
+        <span>CASE STUDIES</span>
       </a>
     </div>
   </div>
@@ -116,7 +116,7 @@ window.addEventListener('pageshow', (event) => {
 <!-- ================= CONTENT SECTION ================= -->
 <section class="content-section" id="my-work">
   <div class="content-header">
-    <h2>My Work</h2>
+    <h2>Case Studies</h2>
     <p>Selected case studies across mobile and web products.</p>
   </div>
 
@@ -378,6 +378,7 @@ window.addEventListener('pageshow', (event) => {
       <form class="contact-form" action="https://formsubmit.co/rodriguesrocky85@gmail.com" method="POST">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_subject" value="New portfolio message">
+          <input type="hidden" name="_next" value=".html#contact">
           <input type="text" name="name" placeholder="NAME" required>
           <input type="email" name="email" placeholder="EMAIL" required>
           <textarea name="message" placeholder="MESSAGE" required></textarea>
@@ -503,46 +504,13 @@ if (backToTop) {
   });
 }
 
-// Contact form: send via FormSubmit AJAX; keeps user on page and shows status.
+// Contact form: show a quick sending message, let FormSubmit handle the POST natively.
 const contactForm = document.querySelector(".contact-form");
 const formStatus = document.getElementById("formStatus");
 
 if (contactForm && formStatus) {
-  contactForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
+  contactForm.addEventListener("submit", () => {
     formStatus.textContent = "Sending...";
-
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/rodriguesrocky85@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          name: contactForm.name.value,
-          email: contactForm.email.value,
-          message: contactForm.message.value,
-          _captcha: "false",
-          _subject: "New portfolio message"
-        })
-      });
-
-      if (!response.ok) throw new Error("Request failed");
-
-      await response.json();
-      formStatus.textContent = "Thanks! Your message was sent.";
-      contactForm.reset();
-    } catch (error) {
-      formStatus.textContent = "Send failed. Please try again or email me directly at rodriguesrocky85@gmail.com.";
-      // Fallback: try normal form submit if fetch was blocked
-      try { contactForm.submit(); } catch (_) {}
-    } finally {
-      if (submitBtn) submitBtn.disabled = false;
-    }
   });
 }
 </script>
