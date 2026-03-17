@@ -9,16 +9,41 @@
 
 <link rel="stylesheet" href="style.css">
 <script>
-// Prevent browsers from restoring scroll and force top on load (helps mobile refresh)
+const HOME_SCROLL_KEY = 'homeScrollY';
+const navEntry = performance.getEntriesByType('navigation')[0];
+const navType = navEntry ? navEntry.type : undefined;
+
+// Prefer native restoration on back/forward; manual for others.
 if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
+  history.scrollRestoration = navType === 'back_forward' ? 'auto' : 'manual';
 }
+
+function restoreScrollFromSession() {
+  const saved = sessionStorage.getItem(HOME_SCROLL_KEY);
+  if (saved !== null) {
+    window.scrollTo({ top: parseFloat(saved) || 0, behavior: 'auto' });
+    sessionStorage.removeItem(HOME_SCROLL_KEY);
+    return true;
+  }
+  return false;
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo({ top: 0, behavior: 'auto' });
-});
-window.addEventListener('pageshow', (event) => {
-  if (event.persisted) {
+  if (navType === 'reload') {
     window.scrollTo({ top: 0, behavior: 'auto' });
+    return;
+  }
+
+  if (restoreScrollFromSession()) return;
+
+  // If a hash exists, let the browser handle it (with scroll-margin-top in CSS).
+  if (location.hash) return;
+});
+
+window.addEventListener('pageshow', (event) => {
+  // If coming from bfcache, prefer saved scroll; otherwise keep existing.
+  if (event.persisted) {
+    restoreScrollFromSession();
   }
 });
 </script>
@@ -438,14 +463,25 @@ window.addEventListener("load", () => {
     document.body.classList.remove("loading");
     setTimeout(() => {
       preloader.remove();
-      window.scrollTo({ top: 0, behavior: "auto" });
+      if (navType === 'reload') {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else {
+        if (!restoreScrollFromSession() && location.hash) {
+          // Allow hash jump post-preloader if no saved scroll.
+          const target = document.querySelector(location.hash);
+          if (target && target.scrollIntoView) target.scrollIntoView();
+        }
+      }
     }, 700);
   }, wait);
 });
 
-// Ensure mobile loads at top after refresh/navigation.
-window.addEventListener("load", () => {
-  window.scrollTo({ top: 0, behavior: "auto" });
+// Save scroll position before navigating to case studies; restore on return.
+const caseStudyLinks = document.querySelectorAll('.work-visual, .work-cta');
+caseStudyLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    sessionStorage.setItem(HOME_SCROLL_KEY, window.scrollY.toString());
+  });
 });
 
 if (contactBox) {
@@ -498,7 +534,7 @@ if (contactForm && formStatus) {
       if (!response.ok) throw new Error("Request failed");
 
       await response.json();
-      formStatus.textContent = "Sent! If this is your first message, check Gmail for a FormSubmit verification link (spam/promotions).";
+      formStatus.textContent = "Thanks! Your message was sent.";
       contactForm.reset();
     } catch (error) {
       formStatus.textContent = "Send failed. Please try again or email me directly at rodriguesrocky85@gmail.com.";
