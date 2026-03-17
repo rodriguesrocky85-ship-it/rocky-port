@@ -1557,8 +1557,8 @@ img {
 
   /* Keep hero full-screen on mobile to hide next section until scroll */
   .hero {
-    min-height: 110vh;
-    height: 110vh;
+    min-height: 120vh;
+    height: 120vh;
   }
 
   .horizontal-timeline {
