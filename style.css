@@ -1555,6 +1555,12 @@ img {
     border-bottom: none;
   }
 
+  /* Keep hero full-screen on mobile to hide next section until scroll */
+  .hero {
+    min-height: 110vh;
+    height: 110vh;
+  }
+
   .horizontal-timeline {
     flex-direction: column;
     gap: 16px;
